@@ -1,0 +1,95 @@
+{
+  "name": "@rxdi/xmigrate",
+  "version": "0.7.51",
+  "main": "./lib/index.js",
+  "author": "Kristiyan Tachev",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc && npx gapi build",
+    "build-executable": "npx gapi build --single-executable",
+    "lint": "npx eslint ./src --ext .ts",
+    "lint-fix": "npx eslint ./src --fix --ext .ts",
+    "pretest": "npm run lint",
+    "coveralls": "cat ./coverage/lcov.info | coveralls",
+    "test": "jest --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rxdi/xmigrate"
+  },
+  "bin": {
+    "xmigrate": "./dist/main.js"
+  },
+  "dependencies": {
+    "@rxdi/core": "^0.7.37",
+    "chalk": "2.4.2",
+    "esm": "3.2.25",
+    "mongodb": "3.3.3",
+    "mongoose": "5.7.6"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.10.2",
+    "@rxdi/parcel-plugin-shebang": "^0.7.38",
+    "@types/chalk": "2.2.0",
+    "@types/jest": "^24.0.22",
+    "@types/mongodb": "3.1.30",
+    "@types/mongoose": "^5.5.30",
+    "@types/node": "^12.0.10",
+    "@typescript-eslint/eslint-plugin": "^2.10.0",
+    "@typescript-eslint/parser": "^2.10.0",
+    "babel-plugin-module-resolver": "^4.0.0",
+    "coveralls": "3.0.5",
+    "eslint": "^6.7.2",
+    "eslint-config-prettier": "^6.7.0",
+    "eslint-plugin-prettier": "^3.1.1",
+    "eslint-plugin-simple-import-sort": "^5.0.0",
+    "jest": "^24.8.0",
+    "prettier": "^2.0.4",
+    "ts-jest": "^24.0.2",
+    "typescript": "^3.5.3"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "testPathIgnorePatterns": [
+      "/node_modules/"
+    ],
+    "coverageReporters": [
+      "lcov",
+      "html"
+    ],
+    "rootDir": "./",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "json",
+      "node"
+    ],
+    "setupFilesAfterEnv": [
+      "./jest-setup.ts"
+    ],
+    "transform": {
+      "\\.(ts|tsx)$": "ts-jest"
+    },
+    "collectCoverageFrom": [
+      "**/*.{ts,tsx}",
+      "!**/.xmigrate/**",
+      "!**/lib/**",
+      "!**/examples/**",
+      "!./xmigrate.ts",
+      "!./src/app.module.ts",
+      "!./src/index.ts",
+      "!./src/main.ts",
+      "!./src/services/index.ts",
+      "!./src/services/generic-runner/generic-runner.service.ts",
+      "!./src/migrations.module.ts",
+      "!./tests/helpers/**"
+    ],
+    "testRegex": "/*/.*\\.spec.(ts|tsx|js)$",
+    "verbose": true,
+    "collectCoverage": true
+  },
+  "types": "./lib/index.d.ts",
+  "module": "./lib/index.js",
+  "typings": "./lib/index.d.ts"
+}
